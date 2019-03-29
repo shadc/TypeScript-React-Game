@@ -1,28 +1,19 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.tsx</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+import Game from "./Components/Game";
+import Header from "./Components/Header"
+
+const StarMatch = () => {
+  const [gameId, setGameId] = useState(1)
+  // startNewGame below, unmounts the Game and remounts a new one... because we've changed the gameId property.
+  return ( 
+    <>
+      <Header name={'Shad'} msg={'Lets Get Started!'}/> 
+      <Game key={gameId} startNewGame={() => setGameId(gameId + 1)}/> 
+    </>
+
+  );
 }
 
-export default App;
+export default StarMatch;
